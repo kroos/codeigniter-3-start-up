@@ -1,0 +1,8 @@
+[Dolphin]
+GroupedSorting=true
+HeaderColumnWidths=250,66,130,105,62
+SortRole=type
+Timestamp=2015,4,24,22,41,33
+Version=3
+ViewMode=1
+VisibleRoles=Details_text,Details_size,Details_date,Details_type,Details_owner,CustomizedDetails
