@@ -210,7 +210,6 @@ EOD;
 		$id = $this->uri->segment(3, 0);
 
 		if (is_numeric($id)) {
-			$data['qu'] = $this->sqlitedb->GetWhere(array('id' => $id), NULL, NULL);
 			if($this->form_validation->run() == TRUE) {
 				if ($this->input->post('update', TRUE)) {
 					$nama = $this->input->post('name1', TRUE);
@@ -224,7 +223,51 @@ EOD;
 					}
 				}
 			}
+			$data['qu'] = $this->sqlitedb->GetWhere(array('id' => $id), NULL, NULL);
 			$this->load->view('edit', $data);
+		}
+	}
+
+	public function emailto() {
+		$data['info'] = NULL;
+		//load database
+		$this->load->database();
+		//load model
+		$this->load->model('sqlitedb');
+		$this->load->library(array('myckeditor', 'form_validation'));
+
+		//load helper form
+		$this->load->helper('form');
+		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
+
+		$id = $this->uri->segment(3, 0);
+		if (is_numeric($id)) {
+			if($this->form_validation->run() == TRUE) {
+				if ($this->input->post('send', TRUE)) {
+
+					$subject = $this->input->post('subject', TRUE);
+					$message = $this->input->post('editor', TRUE);
+
+					//load pop3 (optional)
+					$this->load->library('mypop3mailer');
+					$this->load->library('myphpmailer');
+
+					$res = $this->sqlitedb->GetWhere(array('id' => $id), NULL, NULL);
+
+					//process myphpmailer
+					$this->myphpmailer->AddAddress($res->row()->email, $res->row()->nama);														//recipient
+ 					$this->myphpmailer->Subject = $subject;
+					$this->myphpmailer->MsgHTML($message);
+					$this->myphpmailer->AltBody = "To view the message, please use an HTML compatible email viewer!";	// optional, comment out and test
+
+					if (!$this->myphpmailer->Send()) {
+						$data['info'] = $this->myphpmailer->ErrorInfo;
+					}else{
+						$data['info'] = 'Success sending email';
+					}
+				}
+			}
+			$this->load->view('emailto', $data);
 		}
 	}
 

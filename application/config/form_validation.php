@@ -59,6 +59,21 @@ $config = array	(
 								'label' => 'Email',
 								'rules' => 'trim|required|valid_email'
 							),
+					),
+					'welcome/emailto' => array
+					(
+						array
+							(
+								'field' => 'subject',
+								'label' => 'Subject',
+								'rules' => 'trim|required|max_length[255]'
+							),
+						array
+							(
+								'field' => 'editor',
+								'label' => 'Message',
+								'rules' => 'trim|required'
+							),
 					)
 				);
 /* End of file form_validator.php */
