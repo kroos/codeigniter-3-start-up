@@ -20,6 +20,21 @@
 		<div class="ln"><?=form_submit('send11', 'Send')?></div>
 		<?=form_close()?>
 
+		<table width="80%" border="1">
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>email</th>
+			</tr>
+		<?foreach($query->result() AS $qr):?>
+			<tr>
+				<td align="center"><?=anchor('welcome/edit/'.$qr->id, 'Edit')?></td>
+				<td align="center"><?=$qr->nama?></td>
+				<td align="center"><?=anchor('welcome/emailto/'.$qr->id, 'Send email to '.$qr->nama)?></td>
+			</tr>
+		<?endforeach?>
+		</table>
+
 	<? endblock() ?>
 
 <?end_extend()?>

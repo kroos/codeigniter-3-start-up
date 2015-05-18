@@ -44,6 +44,21 @@ $config = array	(
 								'label' => 'Email Text',
 								'rules' => 'trim|required'
 							),
+					),
+					'welcome/edit' => array
+					(
+						array
+							(
+								'field' => 'name1',
+								'label' => 'Name',
+								'rules' => 'trim|required|max_length[12]'
+							),
+						array
+							(
+								'field' => 'email1',
+								'label' => 'Email',
+								'rules' => 'trim|required|valid_email'
+							),
 					)
 				);
 /* End of file form_validator.php */

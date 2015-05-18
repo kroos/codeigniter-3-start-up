@@ -145,11 +145,20 @@ EOD;
 		$data['info1'] = NULL;
 		$data['info2'] = NULL;
 
+		//load database
+		$this->load->database();
+
+		//load model
+		$this->load->model('sqlitedb');
+
+
 		$this->load->library('form_validation');
 		//load helper form
 		$this->load->helper('form');
 
 		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
+
+		$data['query'] = $this->sqlitedb->GetAll(NULL, NULL);
 
 		if($this->input->post('send1', TRUE)) {
 			$this->form_validation->set_rules('name1', 'Nama', 'trim|required|alpha_numeric_spaces');
@@ -160,11 +169,6 @@ EOD;
 				$this->form_validation->set_rules('email11', 'Email', 'trim|required|valid_email|is_unique[sqlitedb.email]');
 			}
 		}
-		//load database
-		$this->load->database();
-
-		//load model
-		$this->load->model('sqlitedb');
 
 		if($this->form_validation->run() == TRUE) {
 			if($this->input->post('send1', TRUE)) {
@@ -192,4 +196,41 @@ EOD;
 		$this->load->view('dual_form', $data);
 		$this->db->close();
 	}
+
+	public function edit() {
+		//load database
+		$this->load->database();
+		//load model
+		$this->load->model('sqlitedb');
+		$this->load->library('form_validation');
+		//load helper form
+		$this->load->helper('form');
+		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
+
+		$id = $this->uri->segment(3, 0);
+
+		if (is_numeric($id)) {
+			$data['qu'] = $this->sqlitedb->GetWhere(array('id' => $id), NULL, NULL);
+			if($this->form_validation->run() == TRUE) {
+				if ($this->input->post('update', TRUE)) {
+					$nama = $this->input->post('name1', TRUE);
+					$email = $this->input->post('email1', TRUE);
+
+					$res = $this->sqlitedb->update(array('nama' => $nama, 'email' => $email), array('id' => $id));
+					if ($res) {
+						$data['info'] = 'Success update data';
+					} else {
+						$data['info'] = 'Please try again later';
+					}
+				}
+			}
+			$this->load->view('edit', $data);
+		}
+	}
+
+############################################################################################################
+	public function error404() {
+		$this->load->view('error404');
+	}
+############################################################################################################
 }
