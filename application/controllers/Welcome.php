@@ -272,12 +272,13 @@ EOD;
 	}
 	
 	public function image() {
+		//http://phpimageworkshop.com
 		$this->load->library('myimage');
 		
 		$norwayLayer = Myimage::initFromPath('images/double-kurv.jpg');
 		
 		//// This is the text layer
-		$textLayer = Myimage::initTextLayer('Ayus Line Sdn Bhd', 'fonts/YanoneKaffeesatz-Regular.ttf', 11, '000000', 0);
+		$textLayer = Myimage::initTextLayer('Ayus Line Sdn Bhd', 'fonts/YanoneKaffeesatz-Regular.ttf', 48, '000000', 0);
 		
 		// We add the text layer 12px from the Left and 12px from the Bottom ("LB") of the norway layer:
 		$norwayLayer->addLayerOnTop($textLayer, 12, 12, "LB");
