@@ -273,20 +273,25 @@ EOD;
 	
 	public function image() {
 		//http://phpimageworkshop.com
-		$this->load->library('myimage');
-		
+		$this->load->library(array('myimage', 'form_validation'));
+		$this->load->helper('form');
+		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
+
 		$norwayLayer = Myimage::initFromPath('images/double-kurv.jpg');
-		
+
 		//// This is the text layer
 		$textLayer = Myimage::initTextLayer('Ayus Line Sdn Bhd', 'fonts/YanoneKaffeesatz-Regular.ttf', 48, '000000', 0);
-		
+
 		// We add the text layer 12px from the Left and 12px from the Bottom ("LB") of the norway layer:
 		$norwayLayer->addLayerOnTop($textLayer, 12, 12, "LB");
-		
 		$image = $norwayLayer->getResult();
 		header('Content-type: image/jpeg');
 		imagejpeg($image, null, 95); // We chose to show a JPG with a quality of 95%
-		exit;
+	}
+
+	public function password() {
+		$this->load->library('mypassword');
+		$this->load->view('password');
 	}
 ############################################################################################################
 	public function error404() {

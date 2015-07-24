@@ -1,11 +1,11 @@
-<? extend('welcome_message') ?>
+<?php extend('welcome_message') ?>
 
-	<? startblock('body') ?>
+	<?php startblock('body') ?>
 
 		<h2>Error 404</h2>
 
 		<p>Sorry, we cant find that document anywhere in here.. >.< </p>
 
-	<? endblock() ?>
+	<?php endblock() ?>
 
-<?end_extend()?>
+<?php end_extend()?>

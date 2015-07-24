@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds and <strong>{memory_usage}</strong>. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
 <div class="ln">
-<p><?=anchor(site_url(), 'HOME')?>&nbsp;<?=anchor('welcome/tcpdf', 'TCPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/fpdf', 'FPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/phpmailer', 'PHPMailer')?>&nbsp;<?=anchor('welcome/jpgraph', 'JPGraph')?>&nbsp;<?=anchor('welcome/dual_form', 'Dual Form')?></p>
+<p><?=anchor(site_url(), 'HOME')?>&nbsp;<?=anchor('welcome/tcpdf', 'TCPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/fpdf', 'FPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/phpmailer', 'PHPMailer')?>&nbsp;<?=anchor('welcome/jpgraph', 'JPGraph')?>&nbsp;<?=anchor('welcome/dual_form', 'Dual Form')?>&nbsp;<?=anchor('welcome/image', 'Image Manipulation')?>&nbsp;<?=anchor('welcome/password', 'Password Library')?></p>
 </div>
 </body>
 </html>

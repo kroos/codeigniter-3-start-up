@@ -74,6 +74,21 @@ $config = array	(
 								'label' => 'Message',
 								'rules' => 'trim|required'
 							),
+					),
+					'welcome/image' => array
+					(
+						array
+							(
+								'field' => 'image',
+								'label' => 'Choose Image',
+								'rules' => 'trim|required|max_length[255]'
+							),
+						array
+							(
+								'field' => 'wording',
+								'label' => 'Wording',
+								'rules' => 'trim|required|max_length[255]'
+							),
 					)
 				);
 /* End of file form_validator.php */
