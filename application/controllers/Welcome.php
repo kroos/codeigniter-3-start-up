@@ -120,6 +120,12 @@ EOD;
 				$this->load->library('mypop3mailer');
 				$this->load->library('myphpmailer');
 
+				//Set who the message is to be sent from
+				$this->myphpmailer->setFrom('email@email.com', 'naem');
+
+				//Set an alternative reply-to address
+				$this->myphpmailer->addReplyTo('email@email.com', 'naem');
+
 				//process myphpmailer
 				$this->myphpmailer->AddAddress($email, $name);														//recipient
  				$this->myphpmailer->Subject = $subject;
@@ -142,6 +148,9 @@ EOD;
 	}
 
 	public function dual_form() {
+		$this->load->library('table');
+
+		
 		$data['info1'] = NULL;
 		$data['info2'] = NULL;
 
@@ -292,6 +301,44 @@ EOD;
 	public function password() {
 		$this->load->library('mypassword');
 		$this->load->view('password');
+	}
+
+	public function faker() {
+		$this->load->helper(array('form'));
+		$this->load->library(array('myckeditor', 'myfaker', 'mypop3mailer', 'myphpmailer', 'form_validation'));
+		//$this->Myfaker->create();
+		$this->myfaker = Faker\Factory::create();
+
+		$data['info'] = NULL;
+		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
+
+		if($this->form_validation->run() == TRUE) {
+			if ($this->input->post('send', TRUE)) {
+				$i = 0;
+				while($i <= $this->input->post('count', TRUE)) {
+					$name = $this->input->post('name', TRUE);
+					$email = $this->input->post('email', TRUE);
+
+					//Set who the message is to be sent from
+					$this->myphpmailer->setFrom($this->myfaker->email, $this->myfaker->name);
+
+					//Set an alternative reply-to address
+					$this->myphpmailer->addReplyTo($this->myfaker->email, $this->myfaker->name);
+					
+					$this->myphpmailer->AddAddress($email, $name);														//recipient
+ 					$this->myphpmailer->Subject = $this->myfaker->sentence($nbWords = 6);
+					$this->myphpmailer->MsgHTML($this->myfaker->text(400));
+					$this->myphpmailer->AltBody = "To view the message, please use an HTML compatible email viewer!";	// optional, comment out and test
+
+					if (!$this->myphpmailer->Send()) {
+						$data['info'] = $this->myphpmailer->ErrorInfo;
+					}else{
+						$data['info'] = 'Success bombing email';
+					}
+				}
+			}
+		}
+		$this->load->view('faker', $data);
 	}
 ############################################################################################################
 	public function error404() {

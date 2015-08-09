@@ -1,7 +1,7 @@
 RewriteEngine on
 RewriteBase /ci3/trunk/
 
-RewriteCond $1 !^(index\.php|ci3db\.sqlite|images|css|js|robots\.txt|user_guide|fonts|eot|ttf)
+RewriteCond $1 !^(index\.php|ci3db\.sqlite|images|css|js|moo|robots\.txt|user_guide|fonts|eot|ttf)
 RewriteRule ^(.*)$ /ci3/trunk/index.php/$1 [L]
 
 php_flag short_open_tag On

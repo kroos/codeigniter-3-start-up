@@ -89,6 +89,27 @@ $config = array	(
 								'label' => 'Wording',
 								'rules' => 'trim|required|max_length[255]'
 							),
+					),
+					'welcome/faker' => array
+					(
+						array
+							(
+								'field' => 'count',
+								'label' => 'Email Count',
+								'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[200]'
+							),
+						array
+							(
+								'field' => 'name',
+								'label' => 'Victim\'s Name',
+								'rules' => 'trim|required|max_length[255]'
+							),
+						array
+							(
+								'field' => 'email',
+								'label' => 'Victim\'s Email',
+								'rules' => 'trim|required|valid_email'
+							)
 					)
 				);
 /* End of file form_validator.php */

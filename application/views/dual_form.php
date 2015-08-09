@@ -20,21 +20,53 @@
 		<div class="ln"><?=form_submit('send11', 'Send')?></div>
 		<?=form_close()?>
 
-		<table width="80%" border="1">
-			<tr>
-				<th>id</th>
-				<th>name</th>
-				<th>email</th>
-			</tr>
-		<?foreach($query->result() AS $qr):?>
-			<tr>
-				<td align="center"><?=anchor('welcome/edit/'.$qr->id, 'Edit')?></td>
-				<td align="center"><?=$qr->nama?></td>
-				<td align="center"><?=anchor('welcome/emailto/'.$qr->id, 'Send email to '.$qr->nama)?></td>
-			</tr>
-		<?endforeach?>
-		</table>
+<?php
+$template = array(
+        'table_open'            => '<table border="1" cellpadding="4" cellspacing="0" width="80%">',
 
-	<? endblock() ?>
+        //'thead_open'            => '<thead>',
+        //'thead_close'           => '</thead>',
 
-<?end_extend()?>
+        //'heading_row_start'     => '<tr>',
+        //'heading_row_end'       => '</tr>',
+        //'heading_cell_start'    => '<th>',
+        //'heading_cell_end'      => '</th>',
+
+        //'tbody_open'            => '<tbody>',
+        //'tbody_close'           => '</tbody>',
+
+        //'row_start'             => '<tr>',
+        //'row_end'               => '</tr>',
+        //'cell_start'            => '<td>',
+        //'cell_end'              => '</td>',
+
+        'row_alt_start'         => '<tr style="background-color: rgb(204, 204, 204);">',
+        'row_alt_end'           => '</tr>',
+        //'cell_alt_start'        => '<td>',
+        //'cell_alt_end'          => '</td>',
+
+        //'table_close'           => '</table>'
+);
+$this->table->set_template($template);
+
+$this->table->set_heading('id', 'name', 'email');
+
+$atts = array(
+        'width'       => 800,
+        'height'      => 600,
+        'scrollbars'  => 'yes',
+        'status'      => 'yes',
+        'resizable'   => 'yes',
+        'screenx'     => 0,
+        'screeny'     => 0,
+        'window_name' => '_blank'
+);
+
+foreach($query->result() AS $qr){
+	$this->table->add_row(anchor('welcome/edit/'.$qr->id, 'Edit'), $qr->nama, anchor_popup('welcome/emailto/'.$qr->id, 'Send email to '.$qr->nama));
+}
+echo $this->table->generate();
+
+endblock();
+end_extend();
+?>

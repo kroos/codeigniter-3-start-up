@@ -17,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-1.9.1.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-ui-1.10.3.custom.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-ui-timepicker-addon.js"></script>
+
 </head>
 <body>
 <script>
@@ -49,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds and <strong>{memory_usage}</strong>. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
 <div class="ln">
-<p><?=anchor(site_url(), 'HOME')?>&nbsp;<?=anchor('welcome/tcpdf', 'TCPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/fpdf', 'FPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/phpmailer', 'PHPMailer')?>&nbsp;<?=anchor('welcome/jpgraph', 'JPGraph')?>&nbsp;<?=anchor('welcome/dual_form', 'Dual Form')?>&nbsp;<?=anchor('welcome/image', 'Image Manipulation')?>&nbsp;<?=anchor('welcome/password', 'Password Library')?></p>
+<p><?=anchor(site_url(), 'HOME')?>&nbsp;<?=anchor('welcome/tcpdf', 'TCPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/fpdf', 'FPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/phpmailer', 'PHPMailer', array( 'rel' => 'moodalbox'))?>&nbsp;<?=anchor('welcome/jpgraph', 'JPGraph')?>&nbsp;<?=anchor('welcome/dual_form', 'Dual Form')?>&nbsp;<?=anchor('welcome/image', 'Image Manipulation')?>&nbsp;<?=anchor('welcome/password', 'Password Library')?>&nbsp;<?=anchor('welcome/faker', 'Fake Data')?></p>
 </div>
 </body>
 </html>
