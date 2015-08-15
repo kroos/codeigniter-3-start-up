@@ -25,6 +25,8 @@ class Welcome extends CI_Controller {
 		$this->mytcpdf->SetSubject('TCPDF Tutorial');
 		$this->mytcpdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
+
+
 		// set default header data
 		$this->mytcpdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
 		$this->mytcpdf->setFooterData($tc=array(0,64,0), $lc=array(0,64,128));
@@ -120,8 +122,19 @@ EOD;
 				$this->load->library('mypop3mailer');
 				$this->load->library('myphpmailer');
 
+				$this->myphpmailer->IsSMTP();
+				$this->myphpmailer->SMTPAuth = TRUE;									//Set the encryption system to use - ssl (deprecated) or tls
+				$this->myphpmailer->SMTPSecure = $this->config->item('smtp_secure');	//tls or ssl (deprecated)
+				$this->myphpmailer->Host = $this->config->item('smtp_server');			//smtp server
+				$this->myphpmailer->Port = $this->config->item('smtp_port');			//change this port if you are using different port than mine
+				$this->myphpmailer->Username = $this->config->item('mailer_username');	//email account username
+				$this->myphpmailer->Password = $this->config->item('mailer_password');	//email account password
+				$this->myphpmailer->SMTPDebug = $this->config->item('mailer_debug');	//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
+				$this->myphpmailer->Debugoutput = 'html';								//Ask for HTML-friendly debug output
+				$this->myphpmailer->IsHTML(TRUE);
+
 				//Set who the message is to be sent from
-				$this->myphpmailer->setFrom('email@email.com', 'naem');
+				$this->myphpmailer->setFrom('email@email.com', 'naem'); 
 
 				//Set an alternative reply-to address
 				$this->myphpmailer->addReplyTo('email@email.com', 'naem');
@@ -263,6 +276,17 @@ EOD;
 
 					$res = $this->sqlitedb->GetWhere(array('id' => $id), NULL, NULL);
 
+					$this->myphpmailer->IsSMTP();
+					$this->myphpmailer->SMTPAuth = TRUE;									//Set the encryption system to use - ssl (deprecated) or tls
+					$this->myphpmailer->SMTPSecure = $this->config->item('smtp_secure');	//tls or ssl (deprecated)
+					$this->myphpmailer->Host = $this->config->item('smtp_server');			//smtp server
+					$this->myphpmailer->Port = $this->config->item('smtp_port');			//change this port if you are using different port than mine
+					$this->myphpmailer->Username = $this->config->item('mailer_username');	//email account username
+					$this->myphpmailer->Password = $this->config->item('mailer_password');	//email account password
+					$this->myphpmailer->SMTPDebug = $this->config->item('mailer_debug');	//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
+					$this->myphpmailer->Debugoutput = 'html';								//Ask for HTML-friendly debug output
+					$this->myphpmailer->IsHTML(TRUE);
+
 					//process myphpmailer
 					$this->myphpmailer->AddAddress($res->row()->email, $res->row()->nama);														//recipient
  					$this->myphpmailer->Subject = $subject;
@@ -319,6 +343,17 @@ EOD;
 					$name = $this->input->post('name', TRUE);
 					$email = $this->input->post('email', TRUE);
 
+					$this->myphpmailer->IsSMTP();
+					$this->myphpmailer->SMTPAuth = TRUE;									//Set the encryption system to use - ssl (deprecated) or tls
+					$this->myphpmailer->SMTPSecure = $this->config->item('smtp_secure');	//tls or ssl (deprecated)
+					$this->myphpmailer->Host = $this->config->item('smtp_server');			//smtp server
+					$this->myphpmailer->Port = $this->config->item('smtp_port');			//change this port if you are using different port than mine
+					$this->myphpmailer->Username = $this->config->item('mailer_username');	//email account username
+					$this->myphpmailer->Password = $this->config->item('mailer_password');	//email account password
+					$this->myphpmailer->SMTPDebug = $this->config->item('mailer_debug');	//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
+					$this->myphpmailer->Debugoutput = 'html';								//Ask for HTML-friendly debug output
+					$this->myphpmailer->IsHTML(TRUE);
+
 					//Set who the message is to be sent from
 					$this->myphpmailer->setFrom($this->myfaker->email, $this->myfaker->name);
 
@@ -335,6 +370,8 @@ EOD;
 					}else{
 						$data['info'] = 'Success bombing email';
 					}
+    				$this->myphpmailer->clearAddresses();
+    				//$this->myphpmailer->clearAttachments();
 				}
 			}
 		}

@@ -12,7 +12,7 @@ class Myckeditor extends CKEditor {
 		$CI =& get_instance();
 
 		//$CKEditor->basePath = '/ckeditor/'
-		$this->basePath = base_url().'js/ckeditor/';
+		//$this->basePath = base_url().'js/ckeditor/';
 	}
 }
 ?>

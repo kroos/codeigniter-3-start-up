@@ -63,10 +63,11 @@ $atts = array(
 );
 
 foreach($query->result() AS $qr){
-	$this->table->add_row(anchor('welcome/edit/'.$qr->id, 'Edit'), $qr->nama, anchor_popup('welcome/emailto/'.$qr->id, 'Send email to '.$qr->nama));
+	$this->table->add_row(anchor('welcome/edit/'.$qr->id, 'Edit', 'data-effect="mfp-zoom-in"'), $qr->nama, anchor('welcome/emailto/'.$qr->id, 'Send email to '.$qr->nama, 'class="hinge"'));
 }
+echo '<div id="inline-popups">';
 echo $this->table->generate();
-
+echo '</div>';
 endblock();
 end_extend();
 ?>

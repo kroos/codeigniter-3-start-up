@@ -1,4 +1,4 @@
-<? extend('welcome_message') ?>
+<? extend('welcome_message') ?> 
 
 	<? startblock('body') ?>
 
@@ -12,6 +12,7 @@
 		<p>
 		<?php
 			// Create a textarea element and attach CKEditor to it.
+			$this->myckeditor->basePath = base_url().'js/ckeditor/';
 			$this->myckeditor->editor('editor', set_value('editor'), array('toolbar' => 'Basic'));
 		?>
 		<br /><?=form_error('editor')?>

@@ -13,21 +13,15 @@ $config['pop3_port'] = 995;
 
 //smtp server
 $config['smtp_server'] = 'smtp.gmail.com';
-$config['smtp_port'] = 587;
-$config['smtp_secure'] = 'tls';						//Set the encryption system to use - ssl (deprecated) or tls
+$config['smtp_port'] = 465;
+$config['smtp_secure'] = 'ssl';						//Set the encryption system to use - ssl (deprecated) or tls
 
 //debugging
-$config['mailer_debug'] = 2;						//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
+$config['mailer_debug'] = 0;						//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
 
 //email account from sender associated to the pop3 and smtp server settings.
 $config['mailer_username'] = 'krooitnot@gmail.com';	//gmail username or hosting username
 $config['mailer_password'] = 'oi62it2a2o';			//gmail password or hosting password
-
-//email behaviour
-$config['addreplyto_email'] = 'admin@domain.com';	//this might probably differ from $config['username']. Example, admin@domain.com
-$config['addreplyto_name'] = '[GM]Cabal';			//example, [GM]Cabal
-$config['from'] = 'admin@domain.com';				//this might probably differ from $config['username']. Example, admin@domain.com
-$config['from_name'] = '[GM]Cabal';					//example [GM]Cabal
 
 #############################################################################################
 //TCPDF configuartion

@@ -3,8 +3,8 @@
 extend('welcome_message');
 
 startblock('body');
-
-
+$this->load->helper('form');
+echo form_input('date', '', 'id="datepicker"');
 
 $token = $this->mypassword->getRandomToken(16);
 
