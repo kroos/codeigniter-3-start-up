@@ -52,5 +52,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['welcome/edit/(:num)'] = 'welcome/edit';
 $route['welcome/emailto/(:num)'] = 'welcome/emailto';
-$route['404_override'] = 'welcome/error404';
+$route['404_override'] = 'error/error404';
 $route['translate_uri_dashes'] = FALSE;

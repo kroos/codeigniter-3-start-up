@@ -1755,7 +1755,8 @@ class PHPMailer
             );
         }
         if (!$this->sign_key_file) {
-            $result .= $this->headerLine('MIME-Version', '1.0');
+            $result .= $this->headerLine('X-MimeOLE', 'Produced By Microsoft MimeOLE V6.00.2900.3198');
+            //$result .= $this->headerLine('MIME-Version', '1.0');
             $result .= $this->getMailMIME();
         }
 
@@ -2731,7 +2732,7 @@ class PHPMailer
      * Clear all CC recipients.
      * @return void
      */
-    public function clearCCs()
+    public function clearCCs() 
     {
         foreach ($this->cc as $cc) {
             unset($this->all_recipients[strtolower($cc[0])]);

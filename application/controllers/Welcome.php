@@ -161,7 +161,7 @@ EOD;
 	}
 
 	public function dual_form() {
-		$this->load->library('table');
+		$this->load->library(array('myfaker', 'table'));
 
 		
 		$data['info1'] = NULL;
@@ -194,8 +194,8 @@ EOD;
 
 		if($this->form_validation->run() == TRUE) {
 			if($this->input->post('send1', TRUE)) {
-				$nama1 = $this->input->post('name1', TRUE);
-				$email1 = $this->input->post('email1', TRUE);
+				$nama1 = ucwords(strtolower($this->input->post('name1', TRUE)));
+				$email1 = strtolower($this->input->post('email1', TRUE));
 				$res = $this->sqlitedb->insert(array('nama' => $nama1, 'email' => $email1));
 				if($res) {
 					$data['info1'] = 'database inserted';
@@ -204,8 +204,8 @@ EOD;
 				}
 			}else{
 				if($this->input->post('send11', TRUE)) {
-					$nama11 = $this->input->post('name11', TRUE);
-					$email11 = $this->input->post('email11', TRUE);
+					$nama11 = ucwords(strtolower($this->input->post('name11', TRUE)));
+					$email11 = strtolower($this->input->post('email11', TRUE));
 					$res = $this->sqlitedb->insert(array('nama' => $nama11, 'email' => $email11));
 					if($res) {
 						$data['info2'] = 'database inserted';
@@ -234,8 +234,8 @@ EOD;
 		if (is_numeric($id)) {
 			if($this->form_validation->run() == TRUE) {
 				if ($this->input->post('update', TRUE)) {
-					$nama = $this->input->post('name1', TRUE);
-					$email = $this->input->post('email1', TRUE);
+					$nama = ucwords(strtolower($this->input->post('name1', TRUE)));
+					$email = strtolower($this->input->post('email1', TRUE));
 
 					$res = $this->sqlitedb->update(array('nama' => $nama, 'email' => $email), array('id' => $id));
 					if ($res) {
@@ -329,7 +329,7 @@ EOD;
 
 	public function faker() {
 		$this->load->helper(array('form'));
-		$this->load->library(array('myckeditor', 'myfaker', 'mypop3mailer', 'myphpmailer', 'form_validation'));
+		$this->load->library(array('myfaker', 'myphpmailer', 'form_validation'));
 		//$this->Myfaker->create();
 		$this->myfaker = Faker\Factory::create();
 
@@ -338,21 +338,26 @@ EOD;
 
 		if($this->form_validation->run() == TRUE) {
 			if ($this->input->post('send', TRUE)) {
-				$i = 0;
-				while($i <= $this->input->post('count', TRUE)) {
+
+				$this->myphpmailer->IsSMTP();
+				$this->myphpmailer->SMTPAuth = TRUE;									//Set the encryption system to use - ssl (deprecated) or tls
+				$this->myphpmailer->SMTPSecure = $this->config->item('smtp_secure');	//tls or ssl (deprecated)
+				$this->myphpmailer->Host = $this->config->item('smtp_server');			//smtp server
+				$this->myphpmailer->Port = $this->config->item('smtp_port');			//change this port if you are using different port than mine
+				$this->myphpmailer->Username = $this->config->item('mailer_username');	//email account username
+				$this->myphpmailer->Password = $this->config->item('mailer_password');	//email account password
+				$this->myphpmailer->SMTPDebug = $this->config->item('mailer_debug');	//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
+				$this->myphpmailer->Debugoutput = 'html';								//Ask for HTML-friendly debug output
+				$this->myphpmailer->IsHTML(TRUE);
+				$this->myphpmailer->XMailer = 'Microsoft Outlook Express 6.00.2900.3138';
+
+				$count = $this->input->post('count', TRUE);
+				//echo $count;
+
+				for ($i = 1; $i <= $count; $i++) {
+					
 					$name = $this->input->post('name', TRUE);
 					$email = $this->input->post('email', TRUE);
-
-					$this->myphpmailer->IsSMTP();
-					$this->myphpmailer->SMTPAuth = TRUE;									//Set the encryption system to use - ssl (deprecated) or tls
-					$this->myphpmailer->SMTPSecure = $this->config->item('smtp_secure');	//tls or ssl (deprecated)
-					$this->myphpmailer->Host = $this->config->item('smtp_server');			//smtp server
-					$this->myphpmailer->Port = $this->config->item('smtp_port');			//change this port if you are using different port than mine
-					$this->myphpmailer->Username = $this->config->item('mailer_username');	//email account username
-					$this->myphpmailer->Password = $this->config->item('mailer_password');	//email account password
-					$this->myphpmailer->SMTPDebug = $this->config->item('mailer_debug');	//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
-					$this->myphpmailer->Debugoutput = 'html';								//Ask for HTML-friendly debug output
-					$this->myphpmailer->IsHTML(TRUE);
 
 					//Set who the message is to be sent from
 					$this->myphpmailer->setFrom($this->myfaker->email, $this->myfaker->name);
@@ -372,14 +377,11 @@ EOD;
 					}
     				$this->myphpmailer->clearAddresses();
     				//$this->myphpmailer->clearAttachments();
+    				$this->myphpmailer->clearReplyTos();
+    				$this->myphpmailer->clearAllRecipients();
 				}
 			}
 		}
 		$this->load->view('faker', $data);
 	}
-############################################################################################################
-	public function error404() {
-		$this->load->view('error404');
-	}
-############################################################################################################
 }
