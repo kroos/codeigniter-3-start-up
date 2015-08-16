@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/magnific/magnific-popup.css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/magnific/magnific-effect.css" />
 
-	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/magnific/jquery.magnific-popup.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-ui-1.10.3.custom.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-ui-timepicker-addon.js"></script>

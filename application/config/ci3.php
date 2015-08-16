@@ -12,11 +12,11 @@ $config['pop3_server'] = 'pop.gmail.com';
 $config['pop3_port'] = 995;
 
 //smtp server
-$config['smtp_server'] = 'smtp.gmail.com';
-//$config['smtp_server'] = 'localhost';
-$config['smtp_port'] = 465;
-//$config['smtp_port'] = 1024;
-$config['smtp_secure'] = 'ssl';						//Set the encryption system to use - ssl (deprecated) or tls
+//$config['smtp_server'] = 'smtp.gmail.com';
+$config['smtp_server'] = 'localhost';
+//$config['smtp_port'] = 465;
+$config['smtp_port'] = 1024;
+//$config['smtp_secure'] = 'ssl';						//Set the encryption system to use - ssl (deprecated) or tls
 
 //debugging
 $config['mailer_debug'] = 2;						//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
