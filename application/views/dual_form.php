@@ -22,7 +22,7 @@
 
 <?php
 $template = array(
-        'table_open'            => '<table border="1" cellpadding="4" cellspacing="0" width="80%">',
+        'table_open'            => '<table border="1" id="example" cellpadding="4" cellspacing="0" width="80%">',
 
         //'thead_open'            => '<thead>',
         //'thead_close'           => '</thead>',
