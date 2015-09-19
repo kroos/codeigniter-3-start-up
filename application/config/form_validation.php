@@ -112,5 +112,7 @@ $config = array	(
 							)
 					)
 				);
+$config['error_prefix'] = '<font color="#FF0000">';
+$config['error_suffix'] = '</font>';
 /* End of file form_validator.php */
 /* Location: ./application/config/form_validator.php */

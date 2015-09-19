@@ -10,9 +10,7 @@
 		<p><?=form_label('Name : ', 'name2')?><?=form_input('name1', $this->myfaker->name, 'id="name2"')?><br /><?=form_error('name1')?></p>
 		<p><?=form_label('Email : ', 'email2')?><?=form_input('email1', $this->myfaker->email, 'id="email2"')?><br /><?=form_error('email1')?></p>
 		<div class="ln"><?=form_submit('send1', 'Send')?></div>
-		<?=form_close()?>
 
-		<?=form_open()?>
 		<p>Form 2</p>
 		<p><?=@$info2?></p>
 		<p><?=form_label('Name : ', 'name3')?><?=form_input('name11', $this->myfaker->name, 'id="name3"')?><br /><?=form_error('name11')?></p>

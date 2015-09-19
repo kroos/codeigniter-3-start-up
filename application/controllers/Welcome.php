@@ -110,7 +110,6 @@ EOD;
 		$data['info'] = NULL;
 		$this->load->library(array('myckeditor', 'form_validation'));
 		$this->load->helper('form');
-		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
 		if ($this->form_validation->run() == TRUE) {
 			if($this->input->post('send', TRUE)) {
 				$name = $this->input->post('name', TRUE);
@@ -178,8 +177,6 @@ EOD;
 		//load helper form
 		$this->load->helper('form');
 
-		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
-
 		$data['query'] = $this->sqlitedb->GetAll(NULL, NULL);
 
 		if($this->input->post('send1', TRUE)) {
@@ -227,7 +224,6 @@ EOD;
 		$this->load->library('form_validation');
 		//load helper form
 		$this->load->helper('form');
-		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
 
 		$id = $this->uri->segment(3, 0);
 
@@ -260,7 +256,6 @@ EOD;
 
 		//load helper form
 		$this->load->helper('form');
-		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
 
 		$id = $this->uri->segment(3, 0);
 		if (is_numeric($id)) {
@@ -334,7 +329,6 @@ EOD;
 		$this->myfaker = Faker\Factory::create();
 
 		$data['info'] = NULL;
-		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
 
 		if($this->form_validation->run() == TRUE) {
 			if ($this->input->post('send', TRUE)) {
