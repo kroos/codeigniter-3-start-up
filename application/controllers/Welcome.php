@@ -334,45 +334,48 @@ EOD;
 			if ($this->input->post('send', TRUE)) {
 
 				$this->myphpmailer->IsSMTP();
-				$this->myphpmailer->SMTPAuth = TRUE;									//Set the encryption system to use - ssl (deprecated) or tls
+				$this->myphpmailer->SMTPAuth = TRUE;					//Set the encryption system to use - ssl (deprecated) or tls
 				$this->myphpmailer->SMTPSecure = $this->config->item('smtp_secure');	//tls or ssl (deprecated)
-				$this->myphpmailer->Host = $this->config->item('smtp_server');			//smtp server
-				$this->myphpmailer->Port = $this->config->item('smtp_port');			//change this port if you are using different port than mine
+				$this->myphpmailer->Host = $this->config->item('smtp_server');		//smtp server
+				$this->myphpmailer->Port = $this->config->item('smtp_port');		//change this port if you are using different port than mine
 				$this->myphpmailer->Username = $this->config->item('mailer_username');	//email account username
 				$this->myphpmailer->Password = $this->config->item('mailer_password');	//email account password
 				$this->myphpmailer->SMTPDebug = $this->config->item('mailer_debug');	//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
-				$this->myphpmailer->Debugoutput = 'html';								//Ask for HTML-friendly debug output
+				$this->myphpmailer->Debugoutput = 'html';				//Ask for HTML-friendly debug output
 				$this->myphpmailer->IsHTML(TRUE);
-				$this->myphpmailer->XMailer = 'Microsoft Outlook Express 6.00.2900.3138';
+				//$this->myphpmailer->XMailer = 'Microsoft Outlook Express 6.00.2900.3138';
 
 				$count = $this->input->post('count', TRUE);
 				//echo $count;
 
+				$name = $this->input->post('name', TRUE);
+				$email = $this->input->post('email', TRUE);
+
+				$this->myphpmailer->AltBody = "To view the message, please use an HTML compatible email viewer!";	// optional, comment out and test
+
+
 				for ($i = 1; $i <= $count; $i++) {
-					
-					$name = $this->input->post('name', TRUE);
-					$email = $this->input->post('email', TRUE);
 
 					//Set who the message is to be sent from
 					$this->myphpmailer->setFrom($this->myfaker->email, $this->myfaker->name);
 
 					//Set an alternative reply-to address
 					$this->myphpmailer->addReplyTo($this->myfaker->email, $this->myfaker->name);
-					
-					$this->myphpmailer->AddAddress($email, $name);														//recipient
+
+					$this->myphpmailer->AddAddress($email, $name);							//recipient
+
  					$this->myphpmailer->Subject = $this->myfaker->sentence($nbWords = 6);
 					$this->myphpmailer->MsgHTML($this->myfaker->text(400));
-					$this->myphpmailer->AltBody = "To view the message, please use an HTML compatible email viewer!";	// optional, comment out and test
 
 					if (!$this->myphpmailer->Send()) {
 						$data['info'] = $this->myphpmailer->ErrorInfo;
 					}else{
 						$data['info'] = 'Success bombing email';
 					}
-    				$this->myphpmailer->clearAddresses();
-    				//$this->myphpmailer->clearAttachments();
-    				$this->myphpmailer->clearReplyTos();
-    				$this->myphpmailer->clearAllRecipients();
+					$this->myphpmailer->clearAddresses();
+					//$this->myphpmailer->clearAttachments();
+					$this->myphpmailer->clearReplyTos();
+					$this->myphpmailer->clearAllRecipients();
 				}
 			}
 		}
