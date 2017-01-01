@@ -105,7 +105,7 @@ EOD;
 		}
 		$this->myfpdf->Output();
 	}
-
+ 
 	public function phpmailer() {
 		$data['info'] = NULL;
 		$this->load->library(array('myckeditor', 'form_validation'));
@@ -303,7 +303,6 @@ EOD;
 		//http://phpimageworkshop.com
 		$this->load->library(array('myimage', 'form_validation'));
 		$this->load->helper('form');
-		$this->form_validation->set_error_delimiters('<font color="#FF0000">', '</font>');
 
 		$norwayLayer = Myimage::initFromPath('images/double-kurv.jpg');
 
