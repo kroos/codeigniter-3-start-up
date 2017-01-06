@@ -160,7 +160,7 @@ EOD;
 	}
 
 	public function dual_form() {
-		$this->load->library(array('myfaker', 'table'));
+		$this->load->library(array('myfaker', 'table')); 
 
 		
 		$data['info1'] = NULL;
@@ -176,6 +176,9 @@ EOD;
 		$this->load->library('form_validation');
 		//load helper form
 		$this->load->helper('form');
+
+		//initialize faker
+		$this->myfaker = Faker\Factory::create();
 
 		$data['query'] = $this->sqlitedb->GetAll(NULL, NULL);
 

@@ -1,7 +1,7 @@
 <? extend('welcome_message') ?>
 
 	<? startblock('body') ?>
-<?php $this->myfaker = Faker\Factory::create() ?>
+        
 <h2>This is multiple form with sqlite database</h2>
 
 		<?=form_open()?>
