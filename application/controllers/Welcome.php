@@ -20,6 +20,8 @@ class Welcome extends CI_Controller {
 		$data['txt'] = <<<EOD
 						TCPDF Example 003
 						Custom page header and footer are defined by extending the TCPDF class and overriding the Header() and Footer() methods.
+
+						
 EOD;
 		$this->load->view('tcpdf', $data);
 	}

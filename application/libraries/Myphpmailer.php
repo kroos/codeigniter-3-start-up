@@ -1,7 +1,7 @@
 <?php 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-date_default_timezone_set('Etc/UTC');
+//date_default_timezone_set('Etc/UTC');
 require 'phpmailer/PHPMailerAutoload.php';
 
 class Myphpmailer extends PHPMailer {
