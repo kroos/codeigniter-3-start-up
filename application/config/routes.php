@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | Please see the user guide for complete details:
 |
-|	http://codeigniter.com/user_guide/general/routing.html
+|	https://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -50,7 +50,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'welcome';
-$route['welcome/edit/(:num)'] = 'welcome/edit';
-$route['welcome/emailto/(:num)'] = 'welcome/emailto';
-$route['404_override'] = 'error/error404';
+$route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
