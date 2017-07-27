@@ -22,8 +22,8 @@ $config['smtp_port'] = 1024;
 $config['mailer_debug'] = 2;						//debug = 0 (no debug), 1 = errors and messages, 2 = messages only
 
 //email account from sender associated to the pop3 and smtp server settings.
-$config['mailer_username'] = 'krooitnot@gmail.com';	//gmail username or hosting username
-$config['mailer_password'] = 'Dh14udd1n';			//gmail password or hosting password
+$config['mailer_username'] = 'username@gmail.com';	//gmail username or hosting username
+$config['mailer_password'] = 'password';			//gmail password or hosting password
 
 #############################################################################################
 //TCPDF configuartion
