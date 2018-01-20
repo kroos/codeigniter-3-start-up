@@ -245,14 +245,16 @@ EOD;
 
 		$norwayLayer = Myimage::initFromPath('images/double-kurv.jpg');
 
+		// need absolute path for font file
+		$font = realpath('fonts').'/YanoneKaffeesatz-Regular.ttf';
+
 		//// This is the text layer
-		$textLayer = Myimage::initTextLayer('Ayus Line Sdn Bhd', 'fonts/YanoneKaffeesatz-Regular.ttf', 48, '000000', 0);
+		$textLayer = Myimage::initTextLayer('Ayus Line Sdn Bhd', $font, 100, '000000', 35);
 
 		// We add the text layer 12px from the Left and 12px from the Bottom ("LB") of the norway layer:
-		$norwayLayer->addLayerOnTop($textLayer, 12, 12, "LB");
-		$image = $norwayLayer->getResult();
-		header('Content-type: image/jpeg');
-		imagejpeg($image, null, 95); // We chose to show a JPG with a quality of 95%
+		$norwayLayer->addLayerOnTop($textLayer, 100, 500, "LB");
+		$data['image'] = $norwayLayer->getResult();
+		$this->load->view('image_manipulate', $data);
 	}
 
 	public function password() {
