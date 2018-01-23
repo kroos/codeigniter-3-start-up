@@ -131,7 +131,7 @@ jQuery.noConflict ();
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds and <strong>{memory_usage}</strong>. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
 <div class="ln">
-<p><?=anchor(site_url(), 'HOME')?>&nbsp;<?=anchor('welcome/tcpdf', 'TCPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/fpdf', 'FPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/phpmailer', 'PHPMailer', array( 'rel' => 'moodalbox'))?>&nbsp;<?=anchor('welcome/jpgraph', 'JPGraph')?>&nbsp;<?=anchor('welcome/dual_form', 'Dual Form')?>&nbsp;<?=anchor('welcome/image', 'Image Manipulation')?>&nbsp;<?=anchor('welcome/password', 'Password Library')?>&nbsp;<?=anchor('welcome/faker', 'Fake Data')?></p>
+<p><?=anchor(site_url(), 'HOME')?>&nbsp;<?=anchor('welcome/tcpdf', 'TCPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/fpdf', 'FPDF', array('target' => '_blank'))?>&nbsp;<?=anchor('welcome/phpmailer', 'PHPMailer', array( 'rel' => 'moodalbox'))?>&nbsp;<?=anchor('welcome/dual_form', 'Dual Form')?>&nbsp;<?=anchor('welcome/image', 'Image Manipulation')?>&nbsp;<?=anchor('welcome/password', 'Password Library')?>&nbsp;<?=anchor('welcome/faker', 'Fake Data')?></p>
 </div>
 </body>
 </html>

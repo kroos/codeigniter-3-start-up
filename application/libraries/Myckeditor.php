@@ -2,6 +2,7 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require_once('ckeditor/ckeditor.php');
+// require(dirname(__dir__, 2).'/vendor/autoload.php');
 
 class Myckeditor extends CKEditor {
 	function __construct() {

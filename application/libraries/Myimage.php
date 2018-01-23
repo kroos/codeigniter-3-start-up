@@ -2,7 +2,9 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use PHPImageWorkshop\ImageWorkshop as ImageWorkshop;
-require_once('PHPImageWorkshop/autoload.php');
+
+require(dirname(__dir__, 2).'/vendor/autoload.php');
+// require_once('PHPImageWorkshop/autoload.php');
 
 class Myimage extends ImageWorkshop {
 //	function __construct() {

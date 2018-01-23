@@ -1,7 +1,0 @@
-[Dolphin]
-GroupedSorting=true
-SortRole=type
-Timestamp=2015,8,10,1,14,17
-Version=3
-ViewMode=1
-VisibleRoles=CustomizedDetails,Details_text,Details_size,Details_date,Details_type,Details_owner,Details_permissions

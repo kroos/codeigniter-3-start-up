@@ -84,17 +84,6 @@ EOD;
 		$this->load->view('emailer', $data);
 	}
 
-	public function jpgraph () {
-		//load graph library
-		$this->load->library('myjpgraph');
-
-		//data to be pass on to view
-		$data['data1y'] = array(-8,8,9,3,5,6);
-		$data['data2y'] = array(18,2,1,7,5,4);
-
-		$this->load->view('graf', $data);
-	}
-
 	public function dual_form() {
 		$this->load->library(array('myfaker', 'table')); 
 
@@ -297,10 +286,10 @@ EOD;
 				for ($i = 1; $i <= $count; $i++) {
 
 					//Set who the message is to be sent from
-					$this->myphpmailer->setFrom($this->myfaker->email, $this->myfaker->name);
+					$this->myphpmailer->setFrom($this->myfaker->unique()->email, $this->myfaker->unique()->name);
 
 					//Set an alternative reply-to address
-					$this->myphpmailer->addReplyTo($this->myfaker->email, $this->myfaker->name);
+					$this->myphpmailer->addReplyTo($this->myfaker->unique()->email, $this->myfaker->unique()->name);
 
 					$this->myphpmailer->AddAddress($email, $name);							//recipient
 
