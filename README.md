@@ -12,8 +12,7 @@ library:
 6. faker
 
 helper :
-1. php template inheritance (http://arshaw.com/phpti)
-
+1. php template inheritance (arshaw.com/phpti)
 i hope this will help some one who in need it.
 
 once download, please run
