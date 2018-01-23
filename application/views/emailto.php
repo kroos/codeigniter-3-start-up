@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title><?=$this->config->item('title')?></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="This is a Codeigniter Initial Template." />
-	<meta name="keywords" content="codeigniter, plugin, helper" />
-	<meta name="author" content="Zaugola" />
-	<link rel="shortcut icon" href="<?=base_url()?>images/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/welcome.css" />
+  <meta charset="utf-8">
+  <title><?=$this->config->item('title')?></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="This is a Codeigniter Initial Template." />
+  <meta name="keywords" content="codeigniter, plugin, helper" />
+  <meta name="author" content="Zaugola" />
+  <link rel="shortcut icon" href="<?=base_url()?>images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>css/welcome.css" />
 
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/jquery/jquery-ui-1.10.3.custom.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/magnific/magnific-popup.css" />
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/magnific/magnific-effect.css" />
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>css/jqueryui/jquery-ui-1.10.3.custom.css" />
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>css/datatables/jquery.dataTables.css" />
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>css/magnific/magnific-popup.css" />
+  <link rel="stylesheet" type="text/css" href="<?=base_url()?>css/magnific/magnific-effect.css" />
 
-	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>js/magnific/jquery.magnific-popup.min.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-ui-1.10.3.custom.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>js/jquery/jquery-ui-timepicker-addon.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/datatables/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/magnific/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/jqueryui/jquery-ui-1.10.3.custom.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/jqueryui/jquery-ui-timepicker-addon.js"></script>
+
+  <script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
 </head>
 <body>
@@ -93,7 +97,8 @@ jQuery.noConflict ();
           },
           midClick: true
         });
-    
+
+        CKEDITOR.replace( 'editor' );
     });
 })(jQuery);
 </script>
@@ -110,10 +115,10 @@ jQuery.noConflict ();
 		<?=form_open()?>
 
 		<p><?=form_label('Subject : ', 'subject')?><?=form_input('subject', set_value('subject'), 'id="subject"')?><br /><?=form_error('subject')?></p>
-		<p>
+		<p><?=form_textarea('editor', set_value('editor'), 'id="editor1"')?>
 		<?php
 			// Create a textarea element and attach CKEditor to it.
-			$this->myckeditor->editor('editor', set_value('editor'), array('toolbar' => 'Basic'));
+			// $this->myckeditor->editor('editor', set_value('editor'), array('toolbar' => 'Basic'));
 		?>
 		<br /><?=form_error('editor')?>
 		</p>

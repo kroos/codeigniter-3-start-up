@@ -25,6 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script type="text/javascript" src="<?=base_url()?>js/jqueryui/jquery-ui-1.10.3.custom.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jqueryui/jquery-ui-timepicker-addon.js"></script>
 
+	<script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+
 </head>
 <body>
 
@@ -102,6 +104,10 @@ jQuery.noConflict ();
 			});
 
 			$('#example').DataTable();
+
+			CKEDITOR.replace( 'editor' );
+
+
 <?php end_block_marker() ?>
 
 		});

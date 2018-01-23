@@ -38,7 +38,7 @@ EOD;
  
 	public function phpmailer() {
 		$data['info'] = NULL;
-		$this->load->library(array('myckeditor', 'form_validation'));
+		$this->load->library(array('form_validation'));
 		$this->load->helper('form');
 		if ($this->form_validation->run() == TRUE) {
 			if($this->input->post('send', TRUE)) {
@@ -180,7 +180,7 @@ EOD;
 		$this->load->database();
 		//load model
 		$this->load->model('sqlitedb');
-		$this->load->library(array('myckeditor', 'form_validation'));
+		$this->load->library(array('form_validation'));
 
 		//load helper form
 		$this->load->helper('form');
