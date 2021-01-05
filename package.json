@@ -20,7 +20,7 @@
     "@claviska/jquery-minicolors": "^2.3.5",
     "@fortawesome/fontawesome-free": "^5.13.1",
     "animate.css": "^3.7.2",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "bootstrap-carousel-swipe": "0.0.6",
     "cross-env": "^5.2.1",
