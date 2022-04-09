@@ -36,7 +36,7 @@
     "jquery-viewport-checker": "^1.8.8",
     "jquery.cookie": "^1.4.1",
     "lodash": "^4.17.19",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "moment-range": "^4.0.2",
     "pc-bootstrap4-datetimepicker": "^4.17.51",
     "popper.js": "^1.16.1",
